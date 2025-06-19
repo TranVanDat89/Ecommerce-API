@@ -149,11 +149,19 @@ services:
     ports:
       - 5000:5000   # sẽ nhận log qua TCP
     volumes:
-      - ./logstash/pipeline:/usr/share/logstash/pipeline
+      - ./elk-stack/logstash/pipeline:/usr/share/logstash/pipeline
     depends_on:
       - elasticsearch
     networks:
       - ecommerce-net
+
+  elasticsearch-init:
+    image: curlimages/curl
+    depends_on:
+      - elasticsearch
+    volumes:
+      - ./elk-stack/configs:/configs
+    entrypoint: sh ./elk-stack/configs/init-elasticsearch.sh
 
 networks:
   ecommerce-net:

@@ -1,0 +1,9 @@
+{
+  "index_patterns": ["logs-springboot-*"],
+  "template": {
+    "settings": {
+      "index.lifecycle.name": "log-retention-policy",
+      "index.lifecycle.rollover_alias": "logs-springboot"
+    }
+  }
+}
