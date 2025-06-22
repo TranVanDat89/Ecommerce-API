@@ -155,13 +155,17 @@ services:
     networks:
       - ecommerce-net
 
+  # Sử dụng để chạy config log-retention-policy, hiện tại lỗi kết nối tới elasticsearch.
+  # Fix sau
   elasticsearch-init:
     image: curlimages/curl
     depends_on:
       - elasticsearch
     volumes:
       - ./elk-stack/configs:/configs
-    entrypoint: sh ./elk-stack/configs/init-elasticsearch.sh
+    entrypoint: sh /configs/elasticsearch-init.sh
+    networks:
+      - ecommerce-net
 
 networks:
   ecommerce-net:

@@ -74,6 +74,7 @@ DEBEZIUM_PAYLOAD=$(cat <<EOF
     "plugin.name": "pgoutput",
     "slot.name": "debezium",
     "table.include.list": "public.product",
+    "decimal.handling.mode": "string",
     "topic.prefix": "ecommerce"
   }
 }

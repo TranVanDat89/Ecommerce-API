@@ -22,6 +22,8 @@ spring:
     locations: classpath:db/migration
     baseline-on-migrate: true
     clean-disabled: true
+  elasticsearch:
+    uris: http://localhost:9200
 
 api:
   prefix: api/v1
